@@ -1,10 +1,17 @@
-import { UseState } from 'react';
+import { useState, UseState } from 'react';
+import generateNumber from '../Utililty/generateRandomNumber';
 
-function RandomNumber() {
+function RandomNumber({ maxValue }) {
+    const [number, setNumber] = useState(generateNumber(maxValue));
+    const changeNumber = () => {
+        setNumber(generateNumber(maxValue));
+    };
     return (
         <div>
-            <h1>100</h1>
-            <button className="btn">Generate new random number</button>
+            <h1>{number}</h1>
+            <button onClick={changeNumber} className="btn">
+                Generate new random number
+            </button>
         </div>
     );
 }
